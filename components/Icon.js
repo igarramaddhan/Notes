@@ -11,7 +11,7 @@ export default class Icon extends Component{
             <TouchableNativeFeedback onPress={()=>onPressHandle()}>
                 <Image
                     source={icon}
-                    style={{width:40, height:40}}
+                    style={{width:26, height:26}}
                 />
             </TouchableNativeFeedback>
         )

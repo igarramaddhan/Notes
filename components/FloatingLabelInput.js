@@ -32,7 +32,7 @@ export default class FloatingLabelInput extends Component {
         }).start();
     }
     render() {
-        let { label, backgroundColor, borderColor, textColor, ...props } = this.props;
+        let { label, backgroundColor, borderColor, textColor, width, height, ...props } = this.props;
         let { isFocused } = this.state;
         let labelStyle = {
             position: 'absolute',
@@ -56,7 +56,7 @@ export default class FloatingLabelInput extends Component {
         let boxStyle = {
             width: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
-                outputRange: [100, 300]
+                outputRange: width
             }),
             backgroundColor: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
@@ -68,7 +68,7 @@ export default class FloatingLabelInput extends Component {
             }),
             lineWidth: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
-                outputRange: [0, 300]
+                outputRange: [0, width[1]]
             }),
             borderWidth1: this._animatedIsFocused.interpolate({
                 inputRange: [0, 1],
@@ -85,7 +85,7 @@ export default class FloatingLabelInput extends Component {
                 <Animated.View style={{ backgroundColor: boxStyle.backgroundColor, marginTop: 3, borderWidth: boxStyle.borderWidth1 , borderColor: borderColor  }}>
                     <TextInput
                         {...props}
-                        style={{ height: 50, fontSize: 20, color: textColor, padding: 10 }}
+                        style={{ height: height, fontSize: 20, color: textColor, padding: 10 }}
                         underlineColorAndroid={'transparent'}
                         onFocus={this.handleFocus.bind(this)}
                         onBlur={this.handleBlur.bind(this)}
